@@ -5,7 +5,7 @@
 
 int isChild(int toSearch, std::string toFind) // Searches a directory's children to see if their names corrospond to a name given to the function. If true, it returns the directories id. If false, it returns zero.
 {
-	for (int i = 0; i <= folders[toSearch].children.size(); i++)
+	for (int i = 0; i < folders[toSearch].children.size(); i++)
 	{
 		if (folders[folders[toSearch].children[i]].name == toFind)
 		{
