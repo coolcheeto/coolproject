@@ -1,4 +1,5 @@
 #include <vector>
+#include "init/filesys.h"
 
 #ifndef INIT_H
 #define INIT_H

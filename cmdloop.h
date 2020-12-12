@@ -12,18 +12,6 @@ using namespace std;
 
 vector<Folder> folders;
 
-vector<string> split(const string& s, char delimiter)
-{
-	vector<string> tokens;
-	string token;
-	istringstream tokenStream(s);
-	while (getline(tokenStream, token, delimiter))
-	{
-		tokens.push_back(token);
-	}
-	return tokens;
-}
-
 void cmdloop() // This function serves as an interpreter for player commands. It reads the player command and runs the appropriate function.
 {
 	int i = 0;
