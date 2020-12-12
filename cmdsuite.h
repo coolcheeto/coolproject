@@ -1,5 +1,7 @@
 #include <string>
+#include "init/init.h" // Includes the full folder of init
 #include "init/filesys.h"
+
 #ifndef CMDSUITE_H
 #define CMDSUITE_H
 
@@ -9,14 +11,14 @@ int isChild(int toSearch, std::string toFind) // Searches a directory's children
 	{
 		if (folders[folders[toSearch].children[i]].name == toFind)
 		{
-			return ++i;
+			return folders[toSearch].children[i];
 		}
 	}
 
 	return 0;
 }
 
-void ls()
+void ls() // Lists directories
 {
 	if (folders[workingdir].children.size() == 0)
 	{
@@ -30,7 +32,15 @@ void ls()
 	return;
 }
 
-void cd(std::string toChange)
+void mkdir(std::string foldername) // Creates directory
+{
+	folders.push_back(Folder());
+	folders[folders.size() - 1].name = foldername;
+	placeInsideFolder(workingdir, folders.size() - 1);
+}
+
+
+void cd(std::string toChange) // Changes directory
 {	
 	if (toChange == "..")
 	{
@@ -38,7 +48,7 @@ void cd(std::string toChange)
 		return;
 	}
 	int functionResult = isChild(workingdir, toChange);
-
+	
 	if (functionResult == 0)
 	{
 		return;

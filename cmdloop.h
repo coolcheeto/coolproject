@@ -49,7 +49,10 @@ void cmdloop() // This function serves as an interpreter for player commands. It
 			{
 				ls();
 			}
-			else
+			else if (pi[0] == "mkdir" && pi.size() > 1)
+			{
+				mkdir(pi[1]);
+			} else 
 			{
 				cout << "Command not found.\n"; // If the player input doesn't corrospond to any registered commands.
 			}
