@@ -56,10 +56,7 @@ void cmdloop() // This function serves as an interpreter for player commands. It
 		}
 		
 		// Resetting the player input
-		for (int i = 0; i <= 8; i++)
-		{
-			pi[i] = "";
-		}
+		pi.clear();
 	}
 	return;
 }
