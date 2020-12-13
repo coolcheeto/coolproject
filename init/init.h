@@ -15,7 +15,7 @@ void init()
 {
 	/* FOLDERS */
 	folders.push_back(Folder()); // ID 0
-	folders[0].name = "/";
+	folders[0].name = "";
 
 	folders.push_back(Folder()); // ID 1
 	folders[1].name = "Documents";

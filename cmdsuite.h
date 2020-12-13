@@ -20,6 +20,29 @@ vector<string> split(const string& s, char delimiter)
 	return tokens;
 }
 
+// TODO: Get this to work with files whenever those are added
+string getPath(int folder)
+{
+	string output;
+
+	// We do a traceback of all the parent folders
+	vector<int> traceback;
+	traceback.push_back(folder);
+	while (folder > 0) 
+	{
+		folder = folders[folder].parent;
+		traceback.push_back(folder);
+	} 
+	// Then go backwards through the traceback to create the path
+	for (int i = 1; i <= traceback.size(); i++)
+	{
+		output += folders[traceback[traceback.size() - i]].name;
+		output += "/";
+	}
+
+	return output;
+}
+
 int isChild(int toSearch, string toFind) // Searches a directory's children to see if their names corrospond to a name given to the function. If true, it returns the directories id. If false, it returns zero.
 {
 	for (int i = 0; i < folders[toSearch].children.size(); i++)
@@ -37,6 +60,7 @@ void ls() // Lists directories
 {
 	if (folders[workingdir].children.size() == 0)
 	{
+		cout << "Empty directory.\n";
 		return;
 	}
 	for (int x = 0; x <= folders[workingdir].children.size() - 1; x++)
@@ -80,7 +104,7 @@ void cd(string toChange) // Changes directory
 		}
 		if (currentdir == 0)
 		{
-			cout << "Invalid directory.\n";
+			cout << "Invalid path.\n";
 			return;
 		}else 
 		{

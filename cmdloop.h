@@ -19,7 +19,7 @@ void cmdloop() // This function serves as an interpreter for player commands. It
 	vector<string> pi;
 	while (true)
 	{
-		cout<<"player@playercomputer:"<<folders[workingdir].name<<"> ";
+		cout<<"player@playercomputer:"<<getPath(workingdir)<<"> ";
 		
 		// Player Input Processing
 		getline(cin, playerInput); // Get player input and put it in the string variable 'playerInput'
